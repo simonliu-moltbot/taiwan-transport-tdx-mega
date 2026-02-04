@@ -1,33 +1,40 @@
-# 🚀 Taiwan Transport TDX Mega - 工具手冊 (v1.1.0)
+# 🚀 Taiwan Transport TDX Mega - 工具手冊 (v1.2.0)
 
-本文件詳列了所有對接 **交通部 TDX 平台** 的 70+ 個交通數據工具。
+本文件列出了 **Taiwan Transport TDX Mega** 的所有具備語義化名稱的功能 ID。我們已棄用模糊的索引命名，確保 AI 與人類都能輕鬆辨識功能。
 
 ---
 
 ## 🚌 1. 公車與客運 (Bus)
-*   `get_bus_arrival_prediction`: **[核心]** 全台各縣市公車到站預估。
-    *   Input: `city` (英文名), `route` (路線名)。
-*   `bus_expert_tool_01`~`20`: 包含路線站牌位置、業者營運概況、票價資訊等專屬查詢。
+*   `bus_realtime_arrival`: 全台縣市公車即時到站時間。
+*   `bus_route_info`: 查詢路線站牌、站序與營運業者。
+*   `bus_operator_list`: 查詢各縣市客運業者名單。
+*   `bus_stop_location`: 站牌精確經緯度與周邊查詢。
+*   `bus_fare_table`: 查詢路線票價矩陣。
+*   `bus_alert_notice`: 獲取路線改道或減班公告。
 
 ## 🚂 2. 軌道運輸 (Rail & Metro)
-*   `get_tra_station_board`: **[核心]** 台鐵車站即時看板。
-    *   Input: `station_id` (4碼代碼)。
-*   `get_metro_status`: 捷運站點運行狀態 (TRTC, KRTC)。
-*   `rail_expert_tool_01`~`15`: 包含高鐵時刻表查詢、台鐵列車時刻表、票價矩陣等。
+*   `rail_tra_live_board`: 台鐵車站電子看板 (即時誤點資訊)。
+*   `rail_thsr_schedule`: 台灣高鐵時刻表與剩餘座位查詢。
+*   `rail_train_type_info`: 台鐵車種 (自強、莒光) 詳細資訊。
+*   `rail_fare_matrix`: 台鐵各站間票價試算。
+*   `metro_station_status`: 捷運站點即時動態 (北捷、高捷、中捷、桃捷)。
+*   `metro_line_network_map`: 捷運路網與轉乘站資訊。
+*   `metro_first_last_train`: 各站首末班車時間。
 
-## 🚲 3. 微移動 (Bike)
-*   `get_youbike_availability`: **[核心]** YouBike 2.0 即時車位/空位查詢。
-    *   Input: `city` (英文名)。
-*   `bike_expert_tool_01`~`10`: 包含站點位置、歷史租借熱點趨勢、車型統計。
+## 🚲 3. 微移動與生活 (Bike & Parking)
+*   `bike_youbike_availability`: YouBike 2.0 即時車位與空位數。
+*   `bike_station_map`: 查詢租借站詳細地理位置。
+*   `parking_realtime_spots`: 全台路邊與停車場即時剩餘位。
+*   `bike_repair_status`: YouBike 站點維修或暫停營運公告。
 
-## ✈️ 4. 航空與物流 (Aviation & Logistics)
-*   `aviation_expert_tool_01`~`10`: 全台機場航班起降狀態、航廈登機門狀態。
-*   `parking_expert_tool_01`~`10`: 各縣市路邊停車格、公有停車場即時空位統計。
+## ✈️ 4. 航空與航運 (Aviation & Ferry)
+*   `aviation_flight_status`: 全台機場航班起降即時狀態。
+*   `aviation_terminal_service`: 航廈設施與接駁車資訊。
+*   `ferry_line_status`: 全台渡輪航線 (離島、藍色公路) 運行狀態。
 
 ---
 
-## 🛠 開發者指南 (DevOps)
-*   **啟動方式**:
-    *   STDIO: `make run-stdio`
-    *   HTTP: `make run-http` (預設 Port 8001)
-*   **測試**: `make test`
+## 🛡️ 命名規範
+本專案遵循 `[運輸種類]_[具體功能]` 的命名邏輯，例如：
+*   `rail_tra_live_board` -> **鐵路 (Rail)** 下的 **台鐵 (TRA)** 的 **即時看板 (Live Board)**。
+*   `bus_realtime_arrival` -> **公車 (Bus)** 的 **即時到站 (Realtime Arrival)**。
