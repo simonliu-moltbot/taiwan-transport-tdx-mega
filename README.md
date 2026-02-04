@@ -1,25 +1,31 @@
-# 🚀 Taiwan Transport TDX Mega (台灣交通大聯盟)
+# 🚀 Taiwan Transport TDX Mega (台灣交通大聯盟) v1.1.0
 
-這是一個基於 **Model Context Protocol (MCP)** 的重裝級交通數據伺服器，直接串接 **交通部 TDX (Transport Data eXchange) 平台**。
+這是一個基於 **Model Context Protocol (MCP)** 的旗艦級交通數據伺服器，採用與「金融大聯盟」同級的 **DevOps 模組化架構**。本專案 100% 串接 **交通部 TDX (Transport Data eXchange)** 平台數據。
 
-## 🏗️ 專案特色
-- **100% 官方數據**：嚴格遵守合規性，不使用爬蟲，資料皆來自交通部官方 API。
-- **DevOps 規格**：模組化邏輯架構，內建 Dockerfile 與 Makefile。
-- **全方位覆蓋**：包含公車、台鐵、高鐵、捷運、自行車、航空與渡輪數據。
-- **Streamable HTTP**：支援 FastMCP 串流模式，可遠端呼叫。
+## 🏗️ 旗艦級架構特點
+- **模組化分層**：核心邏輯 (`logic/`)、通訊組件 (`utils/`)、設定中心 (`config.py`) 徹底分離。
+- **Streamable HTTP**：基於 FastMCP，支援遠端串流呼叫與 Cherry Studio 對接。
+- **完整文件化**：內建詳細的 Function Docstrings 與 I/O 說明。
+- **自動化運維**：內建 `Makefile`、`Dockerfile` 與 `requirements.txt`。
 
-## 📂 工具分類 (70+ Tools)
-1. **公車動態 (Bus)**：全台各縣市即時到站預估、路線查詢。
-2. **軌道運輸 (Rail)**：台鐵即時看板、高鐵時刻表、捷運站點狀態。
-3. **微移動 (Bike)**：YouBike 2.0 即時車位與站點資訊。
-4. **航空與渡輪 (Aviation & Ferry)**：航班起降狀態、航運即時動態。
-5. **生活機能 (Living)**：全台路邊/停車場即時剩餘車位查詢。
+## 📂 工具完整手冊 (70+ 個工具)
+詳細的功能 ID 與參數說明，請參閱：
+👉 [**docs/TOOLS.md**](./docs/TOOLS.md)
+
+---
 
 ## 🛠 Dive Configuration
+
+在 **Dive** 或 AI 客戶端中新增此 Server：
+
 - **Type**: `stdio`
 - **Command**: `python`
 - **Args**: `src/taiwan_transport_tdx_mega/server.py`
 
-## 🛡️ 數據來源聲明
-數據源：[交通部 TDX 運輸資料流通服務](https://tdx.transportdata.tw/)。
-請確保在使用進階功能時，於 `.env` 中設定您的 `TDX_CLIENT_ID` 與 `TDX_CLIENT_SECRET`。
+## 🛡️ 數據來源說明
+本專案嚴格遵守 **交通部運輸資料流通服務 (TDX)** 使用規範。
+請在 `.env` 中填寫您的憑證以確保高頻訪問：
+```env
+TDX_CLIENT_ID=你的_ID
+TDX_CLIENT_SECRET=你的_SECRET
+```
